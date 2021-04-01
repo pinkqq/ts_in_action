@@ -1,4 +1,6 @@
 "use strict";
+// -----------------------------------------------------------------
+// 1.对象类型接口
 function render(result) {
     result.data.forEach(function (item) {
         console.log(item.id, item.name);
@@ -29,4 +31,15 @@ render({
 */
 render(result);
 var myArray = ["a", "b"];
-// myArray[0] = "v"; error!
+function getLib(version) {
+    var lib = (function () { });
+    lib.version = version || "1.0";
+    lib.doSomething = function () {
+        console.log("do something");
+    };
+    return lib;
+}
+var lib01 = getLib("2.0");
+lib01();
+lib01.version;
+lib01.doSomething();

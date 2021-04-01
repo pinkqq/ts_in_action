@@ -1,3 +1,6 @@
+// -----------------------------------------------------------------
+// 1.对象类型接口
+
 /*
  ** 添加一个字符串索引
 interface List {
@@ -67,3 +70,32 @@ interface ReadonlyStringArray {
 }
 let myArray: ReadonlyStringArray = ["a", "b"];
 // myArray[0] = "v"; error!
+
+// -----------------------------------------------------------------
+// 2.函数类型接口
+interface Add {
+  (a: number, b: number): number;
+}
+// let Add = (a: number, b: number) => number;
+// type Add = (a: number, b: number) => number;
+
+// -----------------------------------------------------------------
+// 3.混合类型接口
+interface Lib {
+  (): void;
+  version: string;
+  doSomething(): void;
+}
+function getLib(version: string) {
+  let lib = (() => {}) as Lib;
+  lib.version = version || "1.0";
+  lib.doSomething = () => {
+    console.log("do something");
+  };
+  return lib;
+}
+
+let lib01 = getLib("2.0");
+lib01();
+lib01.version;
+lib01.doSomething();

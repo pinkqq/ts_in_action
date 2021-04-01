@@ -2,6 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 // import "./datatype";
 // import "./enum";
-require("./interface");
+// import "./interface";
+// import "./function";
+require("./class");
 var hello = "Hello TypeScript";
 document.querySelectorAll(".app")[0].innerHTML = hello;
