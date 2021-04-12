@@ -172,12 +172,12 @@ function hof(handler: Handler) {
 
 // a = b!; // OK, because y matches structure of x
 
-let identity = function <T>(x: T) {
-  return x;
-};
+// let identity = function <T>(x: T) {
+//   return x;
+// };
 
-let reverse = function <U>(y: U): U {
-  return y;
-};
+// let reverse = function <U>(y: U): U {
+//   return y;
+// };
 
-identity = reverse; // OK, because (x: any) => any matches (y: any) => any
+// identity = reverse; // OK, because (x: any) => any matches (y: any) => any
