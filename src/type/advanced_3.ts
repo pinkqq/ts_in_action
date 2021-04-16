@@ -75,3 +75,71 @@ function computedArea(shape: Shape) {
   }
 }
 computedArea({ kind: "circle", r: 1 });
+interface Obj {
+  a: number;
+  b: number;
+  c: number;
+  d: number;
+}
+let obj01: Obj = {
+  a: 1,
+  b: 2,
+  c: 3,
+  d: 4,
+};
+function getValues<T, K extends keyof T>(obj: T, keys: K[]) {
+  return keys.map((key) => obj[key]);
+}
+getValues(obj01, ["a", "b"]);
+// getValues(obj01, ["e", "f"]);
+
+let objProps: keyof Obj;
+let type: Obj["a"];
+
+// 映射类型
+interface Flags {
+  option1: boolean;
+  option2: boolean;
+}
+
+type ReadonlyFlags = Readonly<Flags>;
+type PartialFlags = Partial<Flags>;
+type PickFlags = Pick<Flags, "option1" | "option2">;
+
+type twoStringProps = Record<"prop1" | "prop2", string>;
+
+// 条件类型
+// T extends U ? X : Y
+type TypeName<T> = T extends string
+  ? "string"
+  : T extends number
+  ? "number"
+  : T extends any[]
+  ? "array"
+  : "object";
+
+type T1 = TypeName<string[]>;
+
+// 分布式条件类型
+type T2 = TypeName<string | number>;
+
+// Diff
+type Diff<T, U> = T extends U ? never : T;
+
+type T3 = Diff<"a" | "b" | "c", "a" | "e">;
+// Diff<"a", "a" | "e"> |  Diff<"b", "a" | "e"> |  Diff<"c", "a" | "e">
+// never | "b" | "c"
+// "b" | "c"
+
+// NotNull
+type NotNull<T> = Diff<T, undefined | null>;
+type T4 = NotNull<number | string | null>;
+
+// Exculde
+type T5 = Exclude<"a" | "b" | "c", "a" | "e">;
+
+// Extract
+type T6 = Extract<"a" | "b" | "c", "a" | "e">;
+
+// ReturnType
+type T7 = ReturnType<() => number>;
