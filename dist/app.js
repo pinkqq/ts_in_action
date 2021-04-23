@@ -1,4 +1,1 @@
-(() => {
-  "use strict";
-  document.querySelectorAll(".app")[0].innerHTML = "Hello TypeScript";
-})();
+(()=>{"use strict";document.querySelectorAll(".app")[0].innerHTML="Hello TypeScript"})();
