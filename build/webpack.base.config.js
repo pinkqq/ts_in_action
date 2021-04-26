@@ -1,6 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 // const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
-const { CheckerPlugin } = require("awesome-typescript-loader");
+// const { CheckerPlugin } = require("awesome-typescript-loader");
 module.exports = {
   entry: "./src/index.ts",
   output: {
@@ -15,11 +15,7 @@ module.exports = {
         test: /\.tsx?$/i,
         use: [
           {
-            // loader: "ts-loader",
-            loader: "awesome-typescript-loader",
-            options: {
-              transpileOnly: true, // 只做语言转换，而不做类型检查
-            },
+            loader: "babel-loader",
           },
         ],
         exclude: /node_modules/,
@@ -32,6 +28,6 @@ module.exports = {
       template: "./src/tpl/index.html",
     }),
     // new ForkTsCheckerWebpackPlugin(),
-    new CheckerPlugin(),
+    // new CheckerPlugin(),
   ],
 };
